@@ -1,7 +1,15 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Child from './Child';
 
 function App() {
+  const [msg, setMsg] = useState('No message from child yet.');
+  const dataFromChild = (data) => {
+    console.log(data);
+    setMsg(data);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +25,8 @@ function App() {
         >
           Learn React
         </a>
+        <p>{msg}</p>
+        <Child parentFunction={dataFromChild} />
       </header>
     </div>
   );
